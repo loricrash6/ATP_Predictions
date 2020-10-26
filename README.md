@@ -7,7 +7,7 @@ MALIS Project
 - CHECK uncertainty implementation
 - CHECK: tourney round implementation (+ NOTE: RR matches are counted as the same round, so they cannot be used for other RR matches of the same tourney)
 
-- TO DO: how to treat surface? Weight on other matches? Simple categorical feature? Consider only matches of the same surface (greatly reduces training data though..)
+- TO DO: how to treat surface? Weight on other matches? Categorical feature? Consider only matches of the same surface (greatly reduces training data though)?
 - TO DO: fatigue modeling (num. games played from start of tournament/last two weeks?)
 
 - TO DO: scale normal features to unit variance
