@@ -4,7 +4,7 @@ MALIS Project
 ## Things to do before passing to ML Algorithms implementation:
 - CHECK: common opponents implementation
 - CHECK: time weighting implementation
-- CHECK uncertainty implementation
+- CHECK: uncertainty implementation
 - CHECK: tourney round implementation (+ NOTE: RR matches are counted as the same round, so they cannot be used for other RR matches of the same tourney)
 
 - TO DO: how to treat surface? Weight on other matches? Categorical feature? Consider only matches of the same surface (greatly reduces training data though)?
