@@ -38,6 +38,7 @@ useful_data["tourney_date"]=df["tourney_date"].map(lambda d: datetime.strptime(s
 #******
 #TO DO: how to count score? Num of sets won by the loser? Or just num of games played (evaluated later)?
 #******
+
 #tournament_round mapping
 round_codes={"RR":0, "R128":1, "R64":2, "R32":3, "R16":4, "QF":5, "SF":6, "F":7}
 #PROBLEM: like this, Round Robin (RR) matches are counted as the same round, so I cannot use previous RR matches for another RR match!
