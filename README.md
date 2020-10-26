@@ -1,7 +1,7 @@
 # ATP_predictions
 MALIS Project
 
-##Things to do before passing to ML Algorithms implementation:
+## Things to do before passing to ML Algorithms implementation:
 - CHECK: common opponents implementation
 - CHECK: time weighting implementation
 - CHECK uncertainty implementation
