@@ -26,19 +26,22 @@ to_drop=["tourney_id","draw_size","tourney_level","match_num","minutes","winner_
 useful_data=df.copy(deep=True)
 useful_data=useful_data.drop(to_drop, axis=1) 
 #drop incomplete rows
-useful_data=useful_data.dropna()
+useful_data=useful_data.dropna(axis=0,how="any") #check
 
 #CATEGORICAL FEATURES MAPPING
 #surface mapping
 surface_codes = {'Hard':0, 'Clay':1, 'Grass':2} #map surface as categorical value
 useful_data["surface"] = df["surface"].map(surface_codes)
 #tourney date mapping
-
 useful_data["tourney_date"]=df["tourney_date"].map(lambda d: datetime.strptime(str(d), '%Y%m%d'))
 
 #******
 #TO DO: how to count score? Num of sets won by the loser? Or just num of games played (evaluated later)?
 #******
+#tournament_round mapping
+round_codes={"RR":0, "R128":1, "R64":2, "R32":3, "R16":4, "QF":5, "SF":6, "F":7}
+#PROBLEM: like this, Round Robin (RR) matches are counted as the same round, so I cannot use previous RR matches for another RR match!
+useful_data["round"]=df["round"].map(round_codes)
 
 #best_of mapping
 setnum_codes = {3:0, 5:1}
@@ -109,9 +112,6 @@ to_drop2=['w_1stIn','l_1stIn','w_svpt','l_svpt','w_1stWon','l_1stWon','w_2ndWon'
          "w_bpSaved","l_bpSaved","w_ace","l_ace","w_df","l_df"]
 useful_data=useful_data.drop(to_drop2, axis=1) 
 
-#******
-#evaluate H2H!!! but with whole data merged... (also other features will be added with all data)
-#******
 
 #print(useful_data.dtypes)
 #useful_data
