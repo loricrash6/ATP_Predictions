@@ -1,6 +1,9 @@
 # ATP_predictions
 MALIS Project
 
+The scripts created until now produced the matches.csv file to be refined and used with ML algorithms for binary classification. 
+The workflow of this first part was data_creator.py -> useful_data.csv -> features.py (+surfaces.py) -> matches.csv.
+
 ## Things to do before passing to ML Algorithms implementation
   - CHECK: common opponents implementation
   - CHECK: time weighting implementation
