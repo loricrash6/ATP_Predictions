@@ -73,6 +73,7 @@ def create_pre_match_features(row):
 
 		v.extend(diffs)
 
+
 		v.append(round(stats_p1[3]*stats_p1[4]-stats_p2[3]*stats_p2[4],4)) #complete
 		v.append((stats_p1[3]-stats_p2[4])-(stats_p2[3]-stats_p1[4])) #serveadv
 		#h2h
@@ -106,7 +107,6 @@ def create_pre_match_features(row):
 		else:
 			v.append(1)
 
-		#print(v)
 		return v
 	else:
 		return False
@@ -190,15 +190,15 @@ def retrieve_player_stats(player1,player2,date,r,sur):
 			#weight for surface
 			j["s_ref"]=j.apply(lambda row: sur,axis=1) #reference surface of match under study
 			j["s_w"]=j.apply(surface_weighting,axis=1) #surface weight of each previous match
-			#j=j.drop("s", axis=1)
+			j=j.drop("s", axis=1) #not useful anymore
 
 			#assign weight which decreases as year_diff is higher
 			j["discounting"]=j.apply(time_discount,axis=1)
 			#further multiply time weights by surface weights
 			j["discounting"]=j.apply(lambda row: row["discounting"]*row["s_w"],axis=1)
-			#j=j.drop("s_ref", axis=1)
-			#j=j.drop("s_w", axis=1)
-			#j=j.drop("year_diff", axis=1)
+			j=j.drop("s_ref", axis=1)
+			j=j.drop("s_w", axis=1)
+			j=j.drop("year_diff", axis=1)
 
 			tot_weights=j["discounting"].sum()
 			#normalize weights to sum to 1
@@ -218,6 +218,8 @@ def retrieve_player_stats(player1,player2,date,r,sur):
 			#add to dataframe, go to next one
 			averages.loc[count]=avg
 			count+=1
+
+			#print(j)
 			
 			
 	#at the end of the loop, return the dataframe
@@ -240,8 +242,8 @@ if __name__ == '__main__':
 
 	#let's suppose (at beginning for simplicity) that the first 10000 matches have too few past data to be counted
 	count=0
-	for i in range(10019,10020):#df.shape[0]):
-		#print(i)
+	for i in range(0,df.shape[0]):
+		print(round(i/df.shape[0],4)*100)
 		row=df.loc[i,:]
 
 		feat_vector=create_pre_match_features(row)
@@ -249,11 +251,13 @@ if __name__ == '__main__':
 		if feat_vector!=False:
 			matches.loc[count]=feat_vector
 			count+=1
-			print("Match added to dataframe!\n")
+			#print("Match added to dataframe!\n")
 		else:
-			print("Not enough data for these players! Match skipped...\n")
+			#print("Not enough data for these players! Match skipped...\n")
+			pass
 
-	print(matches)
+	#print(matches)
+	matches.to_csv('matches.csv')
 	"""
 	CHECK: common opponents implementation
 	CHECK: time weighting implementation
