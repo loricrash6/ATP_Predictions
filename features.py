@@ -97,8 +97,18 @@ def create_pre_match_features(row):
 		p1_games=tourney_p1["tot_games"].sum()
 		tourney_p2=df[(((df["winner_name"]==player2) | (df["loser_name"]==player2)) & ((df["tourney_date"]==date) & (df["round"]<r)))]
 		p2_games=tourney_p2["tot_games"].sum()
-		
-		v.append(round((p1_games/(p1_games+p2_games))-(p2_games/(p1_games+p2_games)),4))
+
+		if np.isnan(p1_games):
+			p1_games=0
+		if np.isnan(p2_games):
+			p2_games=0
+
+		if p1_games==0 and p2_games==0:
+			v.append(0) #no games played by either player, we put zero
+			#print("fatigue: 0")
+		else:
+			#print("Fatigue: {}".format((p1_games/(p1_games+p2_games))-(p2_games/(p1_games+p2_games))))
+			v.append(round((p1_games/(p1_games+p2_games))-(p2_games/(p1_games+p2_games)),4))
 
 		v.append(u) #append uncertainty!
 
@@ -242,7 +252,7 @@ if __name__ == '__main__':
 
 	#let's suppose (at beginning for simplicity) that the first 10000 matches have too few past data to be counted
 	count=0
-	for i in range(0,df.shape[0]):
+	for i in range(10020,10100):#df.shape[0]):
 		print(round(i/df.shape[0],4)*100)
 		row=df.loc[i,:]
 
@@ -257,7 +267,7 @@ if __name__ == '__main__':
 			pass
 
 	#print(matches)
-	matches.to_csv('matches.csv')
+	matches.to_csv('matches2.csv')
 	"""
 	CHECK: common opponents implementation
 	CHECK: time weighting implementation
