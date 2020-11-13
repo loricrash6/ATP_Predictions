@@ -1,24 +1,18 @@
 # ATP_predictions
 MALIS Project
 
-The scripts created until now produced the matches.csv file to be refined and used with ML algorithms for binary classification. 
-The workflow of this first part was data_creator.py -> useful_data.csv -> features.py (+surfaces.py) -> matches.csv.
+The scripts of the Data_Creation folder output the "final_data.csv" file with historical data and odds for each ATP match in the decade 2010-2019 with enough past statistics.
 
-## Things to do before passing to ML Algorithms implementation
-  - CHECK: common opponents implementation
-  - CHECK: time weighting implementation
-  - CHECK: uncertainty implementation
-  - CHECK: tourney round implementation (+ NOTE: RR matches are counted as the same round, so they cannot be used for other RR matches of the same tourney)
-  - CHECK: surface weighting implementation (correlations used as weights obtained in the script surfaces.py)
-  - CHECK: fatigue modeling (% difference in num. games played from start of tournament) [NOTE: for now, we did not implement INJURY modeling, as it is quite difficult and did not prove to have a consistent impact on the results]
-
-  - TO DO: scale normal features to unit variance + think of how to treat non-normal features
-  - TO DO: work on data cleansing to see when a feature is practically useless if not even harmful (ex 100% break points converted)
-  
   ### Models to be implemented after data preparation
   - SVM
   - Logistic Regression
   - Neural Networks
   - etc.
+
+### Notes 
+- work on data cleansing to see when a feature is practically useless if not even harmful (ex 100% break points converted);
+- RR matches are counted as the same round, so they cannot be used for other RR matches of the same tourney (and some errors may be occurring in the odds merging when 2 matches between the same players have happened in an ATP Finals tournament);
+- no data before 1/1/2010 has been taken into account: this might be a further development of the work, as matches from early years would surely benefit from an analysis of e.g. 2005-2010 historical data.
   
-  #### Note: all the BETTING part will be added after a first simple binary classification basis has been implemented
+
+
