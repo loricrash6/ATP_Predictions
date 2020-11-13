@@ -52,7 +52,12 @@ def create_pre_match_features(row):
 	v.append(player1)
 	v.append(player2)
 	#rank difference
-	v.append(row["winner_rank"]-row["loser_rank"])
+	#v.append(row["winner_rank"]-row["loser_rank"]) #Execution for matches.csv had this, but it's WRONG!!! It sets always the winner as player 1! 
+	# (Corrected directly in final_csv)
+	if player1==row["winner_name"]:
+		v.append(row["winner_rank"]-row["loser_rank"])
+	else:
+		v.append(row["loser_rank"]-row["winner_rank"])
 
 	#the function retrieve_player_stats should return a dataframe with the average stats of player against each common opponent with the other player
 	avg_p1=retrieve_player_stats(player1,player2,date,r,sur)
@@ -256,8 +261,8 @@ if __name__ == '__main__':
 	count=0
 	print(df.shape[0])
 	for i in range(0,5356):#df.shape[0]): #ONLY 2010
-		#print("{}% done...".format(round(i/df.shape[0],4)*100))
-		print("{}% done...".format(round(i/5356,4)*100))
+		print("{}% done...".format(round(i/df.shape[0],4)*100))
+		#print("{}% done...".format(round(i/5356,4)*100))
 		row=df.loc[i,:]
 
 		feat_vector=create_pre_match_features(row)
