@@ -1,3 +1,5 @@
+##Workflow
+
 The creation of the "final_data.csv" file happened with the following procedure.
 
 1) From the raw data of each match, create through the script "data_creator.py" the meaningful statistics for each match that will serve our purpose. 
