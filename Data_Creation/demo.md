@@ -1,4 +1,4 @@
-##Workflow
+## Workflow
 
 The creation of the "final_data.csv" file happened with the following procedure.
 
