@@ -6,6 +6,11 @@ import re
 #read and concatenate dataframes
 #df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "Data/*.csv"))),ignore_index=True)
 #I put it this way as in the other way they were not ordered by year
+df01=pd.read_csv("Data/atp_matches_2005.csv", sep=',')
+df02=pd.read_csv("Data/atp_matches_2006.csv", sep=',')
+df03=pd.read_csv("Data/atp_matches_2007.csv", sep=',')
+df04=pd.read_csv("Data/atp_matches_2008.csv", sep=',')
+df05=pd.read_csv("Data/atp_matches_2009.csv", sep=',')
 df1=pd.read_csv("Data/atp_matches_2010.csv", sep=',')
 df2=pd.read_csv("Data/atp_matches_2011.csv", sep=',')
 df3=pd.read_csv("Data/atp_matches_2012.csv", sep=',')
@@ -17,7 +22,7 @@ df8=pd.read_csv("Data/atp_matches_2017.csv", sep=',')
 df9=pd.read_csv("Data/atp_matches_2018.csv", sep=',')
 df10=pd.read_csv("Data/atp_matches_2019.csv", sep=',')
 
-df = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10],ignore_index=True)
+df = pd.concat([df01, df02, df03, df04, df05, df1, df2, df3, df4, df5, df6, df7, df8, df9, df10],ignore_index=True)
 
 #drop unwanted features
 to_drop=["tourney_id","draw_size","tourney_level","match_num","minutes","winner_seed","winner_entry","winner_ht","winner_ioc","loser_seed","loser_entry","loser_ht", \
@@ -53,12 +58,17 @@ useful_data["loser_hand"] = df["loser_hand"].map(hand_codes)
 
 #delete rows with too low (probably wrong) service points values
 #print(useful_data.query('w_svpt == 0'))
-#print(len(useful_data))
+print(len(useful_data))
 useful_data = useful_data[useful_data.w_svpt > 10]
 useful_data = useful_data[useful_data.l_svpt > 10]
 useful_data = useful_data[useful_data.w_1stIn > 10]
 useful_data = useful_data[useful_data.l_1stIn > 10]
-#print(len(useful_data))
+useful_data = useful_data[useful_data.w_2ndWon > 5]
+useful_data = useful_data[useful_data.l_2ndWon > 5]
+useful_data = useful_data[useful_data.w_SvGms > 5]
+useful_data = useful_data[useful_data.l_SvGms > 5]
+
+print(len(useful_data))
 
 #evaluate first serve % and create new column
 useful_data['w_fs'] = useful_data.apply(lambda row : int(row['w_1stIn'])/int(row['w_svpt']), axis = 1)
