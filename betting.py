@@ -56,6 +56,7 @@ class Bets:
         gains = [odds_p1[i]*amounts[i] if bets[i]==-1 and winners[i]==0 else odds_p2[i]*amounts[i] if bets[i]==1 and winners[i]==1 else 0 for i in range(len(bets))]
         
         print(f'{nb_won} winning bets, gains of {sum(gains)} investing {sum(amounts)}')
+        
         return (sum(gains)-sum(amounts))/sum(amounts)
 
             
