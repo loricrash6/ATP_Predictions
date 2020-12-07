@@ -42,7 +42,8 @@ class Bets:
         bets, amounts = self.bet(predictions,odds_p1, odds_p2)
 
         nb_won = 0
-
+        gains=[0]*len(bets)
+        
         for i in range(len(bets)):
             if bets[i]==-1 and winners[i]==0: #winning bet on p1
                 gains[i] = odds_p1[i]*amounts[i]
