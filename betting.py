@@ -21,8 +21,8 @@ class Bets:
         
         if self.method=='better_odds':
             #bet a fixed amount when predicted probability of a player winning a match is higher than implied probability
-            implied_probs_p1=[odds_p2[i]/(odds_p1[i]+odds_p2[i]) for i in range(len(predictions))]
-            implied_probs_p2=[odds_p1[i]/(odds_p1[i]+odds_p2[i]) for i in range(len(predictions))]
+            implied_probs_p1=[1/(odds_p1[i]) for i in range(len(predictions))]
+            implied_probs_p2=[1/(odds_p2[i]) for i in range(len(predictions))]
             
             bets=[-1 if predictions[i]>implied_probs_p1[i] else +1 if 1-predictions[i]>implied_probs_p2[i] else 0 for i in range(len(predictions))]
             amounts=[0 if bet==0 else 1 for bet in bets]
@@ -40,8 +40,6 @@ class Bets:
     def roi(self, predictions, odds_p1, odds_p2, winners):
         "winners: array 0 if p1, 1 if p2"
         bets, amounts = self.bet(predictions,odds_p1, odds_p2)
-
-        gains=[0]*len(bets)
 
         nb_won = 0
 
