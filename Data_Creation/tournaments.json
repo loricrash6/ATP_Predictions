@@ -7,7 +7,7 @@
 		"5": ["Sydney", "Medibank International","Apia International","Sydney International"],
 		"6": ["Australian Open"],
 		"7": ["Johannesburg", "SA Tennis Open"],
-		"8": ["Santiago", "Movistar Open","VTR Open","Vina del Mar","Royal Guard Open Chile"],
+		"8": ["Santiago", "Movistar Open","VTR Open","Vina del Mar","Royal Guard Open Chile","Chile Open"],
 		"9": ["Zagreb", "PBZ Zagreb Indoors"],
 		"10": ["Costa Do Sauipe", "Brasil Open", "Sao Paulo"],
 		"11": ["Rotterdam","ABN AMRO World Tennis Tournament"],
@@ -48,7 +48,7 @@
 		"46": ["Canada Masters","Rogers Masters"],
 		"47": ["Cincinnati Masters","Western & Southern Financial Group Masters"],
 		"48": ["New Haven","Pilot Pen Tennis"],
-		"49": ["US Open"],
+		"49": ["US Open","Us Open"],
 		"50": ["Bucharest","Open Romania","BRD Nastase Tiriac Trophy"],
 		"51": ["Metz","Open de Moselle"],
 		"52": ["Bangkok", "Thailand Open"],
@@ -86,6 +86,14 @@
 		"84": ["New York", "New York Open"],
 		"85": ["ATP Next Gen Finals"],
 		"86": ["Cordoba","Cordoba Open"],
-		"87": ["Zhuhai","Zhuhai Open"]
+		"87": ["Zhuhai","Zhuhai Open"],
+		"88": ["ATP Cup", "Atp Cup"],
+		"89": ["Adelaide", "Adelaide International"],
+		"90": ["Cologne 1", "bett1HULKS Indoors"],
+		"91": ["Sardinia","Forte Village Sardegna Open"],
+		"92": ["Cologne 2","bett1HULKS Championship"],
+		"93": ["Nur-Sultan","Astana Open"]
+
+
 	}
 }

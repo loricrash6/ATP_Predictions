@@ -58,4 +58,7 @@ for i in range(matches.shape[0]):
 
 final=final.dropna(axis=0,how="any") #drop matches for which we do not have the odds
 #print(final)
-final.to_csv('final_2005.csv',index=False)
+final.to_csv('final.csv',index=False)
+#final.to_csv('final_2020.csv',index=False)
+
+

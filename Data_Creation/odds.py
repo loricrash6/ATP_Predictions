@@ -14,7 +14,7 @@ import json
 
 #read betting odds in a dataframe
 
-matches=pd.read_csv('matches2.csv', sep=',') #NOTE matches.csv must be adapted! Now running on short toy file
+matches=pd.read_csv('matches.csv', sep=',') 
 #data=pd.read_csv('useful_data.csv', sep=',')
 
 fp = open("tournaments.json", 'r')
@@ -25,6 +25,7 @@ dict_names=d["dict_names"]
 
 odds=pd.DataFrame(columns=["Location","Tournament","Winner","Loser","B365W","B365L","year","tourney_id"])
 for y in range(2010,2020,1):
+#for y in range(2020,2021,1):
 	if y<2013:
 		o=pd.read_excel("Betting_data/"+str(y)+".xls")
 	else:

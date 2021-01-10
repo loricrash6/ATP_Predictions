@@ -265,7 +265,15 @@ def retrieve_player_stats(player1,player2,date,r,sur,year):
 	
 if __name__ == '__main__':
 
-	df = pd.read_csv('useful_data2005.csv', sep=',')
+	df = pd.read_csv('useful_data.csv', sep=',')
+	print(df.shape[0])
+	#df2 = pd.read_csv('useful_data2020.csv', sep=',')
+	#print(df2.loc[0,:])
+	#df = pd.concat([df, df2],ignore_index=True)
+	#print(df.shape[0])
+	#print(df.loc[38128,:])
+
+	
 	df["year"]=df.apply(lambda row: int(row["tourney_date"][0:4]),axis=1)
 	df["tourney_date"]=pd.to_datetime(df["tourney_date"]) #to allow date comparison
 	print("Building match features for {} matches from 1/1/2010 to 31/12/2019...".format(df.shape[0]-12960))
@@ -275,8 +283,8 @@ if __name__ == '__main__':
 	count=0
 	#print(df.shape[0])
 	start=time.time()
-	for i in range(12960,df.shape[0]): #we start (manually hardcoded) from 2010 matches!
-		print("{}% done...".format(round((i-12960)/(df.shape[0]-12960),4)*100))
+	for i in range(38128,df.shape[0]): #we start (manually hardcoded) from 2020 matches!
+		print("{}% done...".format(round((i-38128)/(df.shape[0]-38128),4)*100))
 		row=df.loc[i,:]
 
 		feat_vector=create_pre_match_features(row)
@@ -292,5 +300,6 @@ if __name__ == '__main__':
 	print("Time: {}".format(end-start))
 	#print(matches)
 	matches.to_csv('matches.csv',index=False)
+	
 
 	

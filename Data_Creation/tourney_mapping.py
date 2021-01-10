@@ -16,6 +16,7 @@ df["tourney_id"]=math.nan
 
 for i in range(df.shape[0]):
 	df.loc[i,"year"]=df.loc[i,"date"][0:4]
+	
 	for k in dict_names.keys():
 		if df.loc[i]["tourney"] in dict_names[k]:
 			df.loc[i,"tourney_id"]=int(k)

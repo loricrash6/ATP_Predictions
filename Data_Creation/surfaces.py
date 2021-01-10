@@ -8,7 +8,7 @@ import time
 
 if __name__ == '__main__':
 
-	df = pd.read_csv('useful_data2005.csv', sep=',')
+	df = pd.read_csv('useful_data.csv', sep=',')
 	df["year"]=df.apply(lambda row: int(row["tourney_date"][0:4]),axis=1)
 	win=list(ps.sqldf("SELECT DISTINCT winner_name as win FROM df WHERE year<2018").loc[:,"win"])
 	los=list(ps.sqldf("SELECT DISTINCT loser_name as los FROM df WHERE year<2018").loc[:,"los"])
@@ -93,4 +93,4 @@ if __name__ == '__main__':
 	#rho3=c3/((surf.shape[0]-1)*s[1]*s[2])
 	print(rho1,rho2,rho3)
 
-	# RESULTS: 0,34 - 0,40 - 0,30 #THEY'RE OLD! MUST BE CHANGED!!!
+	# RESULTS: 0,34 - 0,40 - 0,30 

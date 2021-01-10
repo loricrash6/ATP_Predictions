@@ -3,7 +3,9 @@ import glob, os
 from datetime import datetime
 import re
 
-#read and concatenate dataframes
+
+#read and concatenate dataframes (NOTE: 2020 is done separately as it was added later...)
+
 #df = pd.concat(map(pd.read_csv, glob.glob(os.path.join('', "Data/*.csv"))),ignore_index=True)
 #I put it this way as in the other way they were not ordered by year
 df01=pd.read_csv("Data/atp_matches_2005.csv", sep=',')
@@ -23,6 +25,9 @@ df9=pd.read_csv("Data/atp_matches_2018.csv", sep=',')
 df10=pd.read_csv("Data/atp_matches_2019.csv", sep=',')
 
 df = pd.concat([df01, df02, df03, df04, df05, df1, df2, df3, df4, df5, df6, df7, df8, df9, df10],ignore_index=True)
+
+#df=pd.read_csv("Data/atp_matches_2020.csv", sep=',')
+
 
 #drop unwanted features
 to_drop=["tourney_id","draw_size","tourney_level","match_num","minutes","winner_seed","winner_entry","winner_ht","winner_ioc","loser_seed","loser_entry","loser_ht", \
@@ -127,3 +132,4 @@ useful_data=useful_data.drop(to_drop2, axis=1)
 #useful_data
 useful_data.head(2)
 useful_data.to_csv(r'useful_data.csv', index = False)
+#useful_data.to_csv(r'useful_data2020.csv', index = False)
