@@ -1,6 +1,6 @@
 # ML for ATP Tennis Matches Predictions
 ## MALIS Project - EURECOM, Fall 2020
-### Lorenzo Cascioli, Raphael Toumi
+### Lorenzo Cascioli
 
 The scripts of the Data_Creation folder output the "final.csv" file with historical data and odds for each ATP match in the decade 2010-2019 with enough past statistics (+"final_2020.csv" for the last year, processed separately).
 
